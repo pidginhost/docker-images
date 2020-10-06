@@ -20,6 +20,7 @@ RUN apk --update --no-cache add \
     && mkdir /config \
     && chmod g+rwx /config \
     && wget $(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | grep browser_download_url | grep linux_amd64 | cut -d '"' -f 4) -O /usr/bin/yq \
+    && chmod +x /usr/bin/yq \
     && helm repo add stable https://kubernetes-charts.storage.googleapis.com \
     && helm repo add bitnami https://charts.bitnami.com/bitnami \
     && helm repo update
