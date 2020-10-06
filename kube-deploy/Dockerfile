@@ -2,10 +2,10 @@ FROM python:3.8-alpine
 
 # Note: Latest version of kubectl may be found at:
 # https://github.com/kubernetes/kubernetes/releases
-ENV KUBE_LATEST_VERSION="v1.18.2"
+ENV KUBE_LATEST_VERSION="v1.18.8"
 # Note: Latest version of helm may be found at
 # https://github.com/kubernetes/helm/releases
-ENV HELM_VERSION="v3.2.1"
+ENV HELM_VERSION="v3.3.1"
 
 ENV YQ_VERSION="3.4.0"
 
