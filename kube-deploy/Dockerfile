@@ -2,10 +2,12 @@ FROM python:3.8-alpine
 
 # Note: Latest version of kubectl may be found at:
 # https://github.com/kubernetes/kubernetes/releases
-ENV KUBE_LATEST_VERSION="v1.18.8"
+ENV KUBE_LATEST_VERSION="v1.18.2"
 # Note: Latest version of helm may be found at
 # https://github.com/kubernetes/helm/releases
-ENV HELM_VERSION="v3.3.1"
+ENV HELM_VERSION="v3.2.1"
+
+ENV YQ_VERSION="3.4.0"
 
 RUN apk --update --no-cache add \
     bash \
@@ -19,7 +21,7 @@ RUN apk --update --no-cache add \
     && chmod g+rwx /root \
     && mkdir /config \
     && chmod g+rwx /config \
-    && wget $(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | grep browser_download_url | grep linux_amd64 | cut -d '"' -f 4) -O /usr/bin/yq \
+    && wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq \
     && chmod +x /usr/bin/yq \
     && helm repo add stable https://kubernetes-charts.storage.googleapis.com \
     && helm repo add bitnami https://charts.bitnami.com/bitnami \
